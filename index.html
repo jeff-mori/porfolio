@@ -118,7 +118,7 @@
           </li>
           <li class="wrapper-nav-work">
             <div class="nav-dot off"></div>
-            <a href="#estacio" class="link-wrapper-project w-inline-block w--current">
+            <a href="#estacio" class="link-wrapper-project w-inline-block">
               <div class="nav-dot"></div>
               <div class="project-cont-nav">
                 <div>Estácio</div>
@@ -168,7 +168,7 @@
               <div class="pill-year">2025</div>
               <div class="dot-project"></div>
               <div class="cont-cta-work">
-                <a data-wf--cta-big--variant="work" href="https://ampli.net/" target="_blank" class="main-cont-button w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd w-inline-block">
+                <a data-wf--cta-big--variant="work" href="https://medgrupo.com.br/medcursoemed/" target="_blank" class="main-cont-button w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd w-inline-block">
                   <div class="icon-wrapper-cta-first w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd"><img loading="lazy" src="src/icons/arrow-grey-out.svg" alt="" class="arrow-cion w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd"></div>
                   <div class="text-wrapper-cta w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd">See it live</div>
                   <div class="icon-wrapper-cta w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd"><img loading="lazy" src="src/icons/arrow-grey-out.svg" alt="" class="arrow-cion w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd"></div>
@@ -282,7 +282,7 @@
             </div>
             <div class="content-project-info">
               <p class="body-copy title">Challenge:</p>
-              <p class="body-copy black">Hering brought us on board to rethink their digital shopping experience, aligning it with the strategic brand repositioning they’ve been driving over the past few years. The challenge was highly ambitious: instead of just sticking to standard e-commerce optimization, Hering wanted to dive deeper and completely reinvent how people buy fashion online today. Armed with this challenging mission, we conducted extensive field research—speaking with stakeholders, regional customers, and industry experts—to uncover the insights of an uncharted territory we were determined to pioneer."</p>
+              <p class="body-copy black">Hering brought us on board to rethink their digital shopping experience, aligning it with the strategic brand repositioning they’ve been driving over the past few years. The challenge was highly ambitious: instead of just sticking to standard e-commerce optimization, Hering wanted to dive deeper and completely reinvent how people buy fashion online today. Armed with this challenging mission, we conducted extensive field research-speaking with stakeholders, regional customers, and industry experts-to uncover the insights of an uncharted territory we were determined to pioneer."</p>
             </div>
             <div class="content-project-info">
               <p class="body-copy title">Services:</p>
@@ -422,7 +422,7 @@ The core UX/UI challenge was balancing high-definition video consumption with in
             <h2 class="heading-cta main">If you're still here is for a good reason</h2>
             <p class="body-copy-cta">I help make your projects clear and hard to forget.</p>
           </div>
-          <a href=" #" class="cta-button-wrapper w-inline-block">
+          <a href="mailto:jeferson.mori@yahoo.it" class="cta-button-wrapper w-inline-block">
             <div class="cont-icon-cta"><img src="src/icons/arrow-grey.svg" loading="lazy" alt="" class="arrow-cta"></div>
             <h2 class="heading-cta">Let's talk</h2>
             <h2 class="email-cta">jeferson.mori@yahoo.it</h2>
@@ -726,6 +726,40 @@ window.addEventListener('DOMContentLoaded', () => {
           videoObserver.observe(video);
         });
       }
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const animatedElements = document.querySelectorAll(
+        ".cont-project-imgs, .img-project, .video-cont-p2, .main-project-wrapper"
+      );
+
+      const observerOptions = {
+        root: null,
+        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "none";
+            entry.target.style.transition = "opacity 0.4s ease-out, transform 0.4s ease-out";
+            
+            const children = entry.target.querySelectorAll(".img-project, .video-cont-p2");
+            children.forEach((child) => {
+              child.style.opacity = "1";
+              child.style.transform = "none";
+            });
+
+            obs.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      animatedElements.forEach((el) => observer.observe(el));
     });
   </script>
 
